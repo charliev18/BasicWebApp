@@ -1,6 +1,8 @@
 package com.develogical;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class QueryProcessor {
 
@@ -18,6 +20,8 @@ public class QueryProcessor {
                 "Beta");
         map.put("plus",
                 "p");
+        map.put("largest",
+                "l");
     }
 
     public String process(String query) {
@@ -43,7 +47,20 @@ public class QueryProcessor {
             int b = Integer.parseInt(second);
 
             return Integer.toString(a + b);
+        }
 
+        if (output.equals("l")) {
+            int index = input.indexOf(":");
+            String nums = input.substring(index + 2);
+
+            String[] strs = nums.split(", ");
+            int largest = 0;
+            for (String str : strs) {
+                int num = Integer.parseInt(str);
+                if (num > largest) largest = num;
+            }
+
+            return Integer.toString(largest);
         }
 
         return(map.getOrDefault(k, ""));
