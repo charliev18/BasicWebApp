@@ -20,7 +20,12 @@ public class QueryProcessor {
 
     public String process(String query) {
         String input = query.toLowerCase();
-
-        return(map.getOrDefault(input, ""));
+        String k = "";
+        for(String key : map.keySet()) {
+            if (input.contains(key)) {
+                k = key;
+            }
+        }
+        return(map.getOrDefault(k, ""));
     }
 }
