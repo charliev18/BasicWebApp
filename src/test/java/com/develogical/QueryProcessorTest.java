@@ -69,6 +69,13 @@ public class QueryProcessorTest {
     }
 
     @Test
+    public void knowsPrimes2() throws Exception {
+        assertThat(queryProcessor.process("which of the following numbers are primes: 638"),
+                containsString(""));
+    }
+
+
+    @Test
     public void isNotCaseSensitive() throws Exception {
         assertThat(queryProcessor.process("shakespeare"), containsString("playwright"));
     }

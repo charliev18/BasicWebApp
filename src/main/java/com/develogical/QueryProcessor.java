@@ -59,11 +59,12 @@ public class QueryProcessor {
             String[] strs = nums.split(", ");
             int largest = 0;
             for (String str : strs) {
+                System.out.println(str);
                 if (str.isEmpty()) continue;
                 int num = Integer.parseInt(str);
                 if (num > largest) largest = num;
             }
-
+            System.out.println(largest);
             return Integer.toString(largest);
         }
 
@@ -87,9 +88,12 @@ public class QueryProcessor {
             String[] strs = nums.split(", ");
             for (String str : strs) {
                 if (str.isEmpty()) continue;
+                System.out.println(str);
                 int num = Integer.parseInt(str);
                 if (isPrime(num)) return Integer.toString(num);
             }
+
+            return "";
         }
 
         return(map.getOrDefault(k, ""));
