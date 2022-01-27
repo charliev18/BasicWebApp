@@ -1,17 +1,26 @@
 package com.develogical;
 
+import java.util.HashMap;
+
 public class QueryProcessor {
 
-    public String process(String query) {
-        if (query.toLowerCase().contains("shakespeare")) {
-            return "William Shakespeare (26 April 1564 - 23 April 1616) was an " +
-                    "English poet, playwright, and actor, widely regarded as the greatest " +
-                    "writer in the English language and the world's pre-eminent dramatist.";
-        }
+    private HashMap<String, String> map;
 
-        if (query.toLowerCase().contains("imperial")) {
-            return "Imperial College is a university in London";
-        }
-        return "";
+    public QueryProcessor() {
+        map = new HashMap<>();
+        map.put("shakespeare",
+                "William Shakespeare (26 April 1564 - 23 April 1616) was an " +
+                        "English poet, playwright, and actor, widely regarded as the greatest " +
+                        "writer in the English language and the world's pre-eminent dramatist.");
+        map.put("imperial",
+                "Imperial College is a university in London");
+        map.put("your name",
+                "Beta");
+    }
+
+    public String process(String query) {
+        String input = query.toLowerCase();
+
+        return(map.getOrDefault(input, ""));
     }
 }
