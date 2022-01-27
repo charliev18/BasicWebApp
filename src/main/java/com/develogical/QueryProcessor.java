@@ -3,6 +3,7 @@ package com.develogical;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class QueryProcessor {
 
@@ -24,8 +25,8 @@ public class QueryProcessor {
                 "l");
         map.put("multiplied",
                 "m");
-//        map.put("square",
-//                "s");
+        map.put("prime",
+                "pr");
     }
 
     public String process(String query) {
@@ -79,6 +80,24 @@ public class QueryProcessor {
             return Integer.toString(a * b);
         }
 
+        if (output.equals("pr")) {
+            int index = input.indexOf(":");
+            String nums = input.substring(index + 2);
+
+            String[] strs = nums.split(", ");
+            for (String str : strs) {
+                if (str.isEmpty()) continue;
+                int num = Integer.parseInt(str);
+                if (isPrime(num)) return Integer.toString(num);
+            }
+        }
+
         return(map.getOrDefault(k, ""));
+    }
+
+    private boolean isPrime(int number) {
+        return number > 1
+                && IntStream.rangeClosed(2, (int) Math.sqrt(number))
+                .noneMatch(n -> (number % n == 0));
     }
 }
