@@ -74,6 +74,12 @@ public class QueryProcessorTest {
                 containsString(""));
     }
 
+    @Test
+    public void knowsMinus() throws Exception {
+        assertThat(queryProcessor.process("what is 3 minus 6"),
+                containsString("-3"));
+    }
+
 
     @Test
     public void isNotCaseSensitive() throws Exception {

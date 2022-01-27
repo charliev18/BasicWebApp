@@ -27,6 +27,8 @@ public class QueryProcessor {
                 "m");
         map.put("prime",
                 "pr");
+        map.put("minus",
+                "mi");
     }
 
     public String process(String query) {
@@ -94,6 +96,19 @@ public class QueryProcessor {
             }
 
             return "";
+        }
+
+        if (output.equals("mi")) {
+            int index = input.indexOf("minus");
+            String first = input.substring(0, index - 1);
+            String second = input.substring(index + 6);
+
+            int iOfSpace = first.lastIndexOf(' ');
+            String fstNum = first.substring(iOfSpace + 1);
+            int a = Integer.parseInt(fstNum);
+            int b = Integer.parseInt(second);
+
+            return Integer.toString(a - b);
         }
 
         return(map.getOrDefault(k, ""));
