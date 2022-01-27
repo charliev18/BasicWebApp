@@ -22,6 +22,8 @@ public class QueryProcessor {
                 "p");
         map.put("largest",
                 "l");
+        map.put("multiplied",
+                "m");
     }
 
     public String process(String query) {
@@ -38,8 +40,6 @@ public class QueryProcessor {
             int index = input.indexOf("plus");
             String first = input.substring(0, index - 1);
             String second = input.substring(index + 5);
-
-            System.out.println(first + second);
 
             int iOfSpace = first.lastIndexOf(' ');
             String fstNum = first.substring(iOfSpace + 1);
@@ -61,6 +61,19 @@ public class QueryProcessor {
             }
 
             return Integer.toString(largest);
+        }
+
+        if (output.equals("m")) {
+            int index = input.indexOf("multiplied by");
+            String first = input.substring(0, index - 1);
+            String second = input.substring(index + 14);
+
+            int iOfSpace = first.lastIndexOf(' ');
+            String fstNum = first.substring(iOfSpace + 1);
+            int a = Integer.parseInt(fstNum);
+            int b = Integer.parseInt(second);
+
+            return Integer.toString(a * b);
         }
 
         return(map.getOrDefault(k, ""));
