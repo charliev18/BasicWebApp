@@ -16,6 +16,8 @@ public class QueryProcessor {
                 "Imperial College is a university in London");
         map.put("your name",
                 "Beta");
+        map.put("plus",
+                "p");
     }
 
     public String process(String query) {
@@ -26,6 +28,24 @@ public class QueryProcessor {
                 k = key;
             }
         }
+        String output = map.getOrDefault(k, "");
+
+        if (output.equals("p")) {
+            int index = input.indexOf("plus");
+            String first = input.substring(0, index - 1);
+            String second = input.substring(index + 5);
+
+            System.out.println(first + second);
+
+            int iOfSpace = first.lastIndexOf(' ');
+            String fstNum = first.substring(iOfSpace + 1);
+            int a = Integer.parseInt(fstNum);
+            int b = Integer.parseInt(second);
+
+            return Integer.toString(a + b);
+
+        }
+
         return(map.getOrDefault(k, ""));
     }
 }
