@@ -24,6 +24,8 @@ public class QueryProcessor {
                 "l");
         map.put("multiplied",
                 "m");
+//        map.put("square",
+//                "s");
     }
 
     public String process(String query) {
@@ -56,6 +58,7 @@ public class QueryProcessor {
             String[] strs = nums.split(", ");
             int largest = 0;
             for (String str : strs) {
+                if (str.isEmpty()) continue;
                 int num = Integer.parseInt(str);
                 if (num > largest) largest = num;
             }
